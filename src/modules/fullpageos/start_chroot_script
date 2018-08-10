@@ -19,7 +19,7 @@ apt-get remove -y --purge scratch squeak-plugins-scratch squeak-vm wolfram-engin
 apt-get autoremove -y
 
 #apt-get tools
-apt-get -y --force-yes install python2.7 git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm
+apt-get -y --force-yes install python3.6 python3-flask git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm
 
 if [ "$FULLPAGEOS_INCLUDE_CHROMIUM" == "yes" ]
 then
@@ -32,38 +32,48 @@ apt-get install -y --force-yes vim x11vnc expect
 
 
 #Install web stack
-if [ "$FULLPAGEOS_INCLUDE_LIGHTTPD" == "yes" ]
+# if [ "$FULLPAGEOS_INCLUDE_LIGHTTPD" == "yes" ]
+# then
+#     apt-get install -y lighttpd php-common php-cgi php
+#     lighty-enable-mod fastcgi-php
+#     #service lighttpd force-reload
+#     chown -R www-data:www-data /var/www/html
+#     chmod 775 /var/www/html
+#     usermod -a -G www-data pi
+#     systemctl enable clear_lighttpd_cache.service
+#     pushd /var/www/html
+#         #Put git clones in place
+#         if [ "$FULLPAGEOS_INCLUDE_DASHBOARD" == "yes" ]
+#         then
+#         gitclone FULLPAGEOS_DASHBOARD_REPO FullPageDashboard
+#             chown -R pi:pi FullPageDashboard
+#             chown -R www-data:www-data FullPageDashboard
+#             chmod 775 FullPageDashboard
+#             pushd FullPageDashboard
+#                 sed -i "s@'INIT_URL_PATH', __DIR__ . '/init.txt'@'INIT_URL_PATH', '/boot/fullpagedashboard.txt'@g" config.php
+#             popd
+#         fi
+#         #Set Welcome screen
+#         if [ "$FULLPAGEOS_INCLUDE_WELCOME" == "yes" ]
+#         then
+#             gitclone FULLPAGEOS_WELCOME_REPO welcome
+#             chown -R www-data:www-data welcome
+#         fi
+#     popd
+#
+#     echo "enabled" > /boot/check_for_httpd
+# else
+echo "disabled" > /boot/check_for_httpd
+# fi
+
+if [ "$FULLPAGEOS_INCLUDE_INTEL" == "yes" ]
 then
-    apt-get install -y lighttpd php-common php-cgi php
-    lighty-enable-mod fastcgi-php
-    #service lighttpd force-reload
-    chown -R www-data:www-data /var/www/html
-    chmod 775 /var/www/html
-    usermod -a -G www-data pi
-    systemctl enable clear_lighttpd_cache.service
-    pushd /var/www/html
-        #Put git clones in place
-        if [ "$FULLPAGEOS_INCLUDE_DASHBOARD" == "yes" ]
-        then
-        gitclone FULLPAGEOS_DASHBOARD_REPO FullPageDashboard
-            chown -R pi:pi FullPageDashboard
-            chown -R www-data:www-data FullPageDashboard
-            chmod 775 FullPageDashboard
-            pushd FullPageDashboard
-                sed -i "s@'INIT_URL_PATH', __DIR__ . '/init.txt'@'INIT_URL_PATH', '/boot/fullpagedashboard.txt'@g" config.php
-            popd
-        fi
-        #Set Welcome screen
-        if [ "$FULLPAGEOS_INCLUDE_WELCOME" == "yes" ]
-        then        
-            gitclone FULLPAGEOS_WELCOME_REPO welcome
-            chown -R www-data:www-data welcome
-        fi
-    popd
-    
-    echo "enabled" > /boot/check_for_httpd
-else
-    echo "disabled" > /boot/check_for_httpd
+    gitclone FULLPAGEOS_INTEL_REPO intel
+    cd intel
+    python3 -m venv venv
+    . venv/bin/activate
+    python3 -m pip install -r requirements.txt
+    python3 app.py
 fi
 
 
