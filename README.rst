@@ -113,6 +113,7 @@ Usage
 #. Run ``src/build_dist`` as root.
 #. The final image will be created in ``src/workspace``
 
-## Resources
-- https://yingtongli.me/blog/2016/12/21/splash.html
-- https://www.instructables.com/id/Raspberry-Pi-Launch-Python-script-on-startup/
+Resources
+~~~~~
+#. https://yingtongli.me/blog/2016/12/21/splash.html
+#. https://www.instructables.com/id/Raspberry-Pi-Launch-Python-script-on-startup/
