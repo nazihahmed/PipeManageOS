@@ -87,6 +87,7 @@ fi
 #echo "sudo -u pi startx /home/pi/scripts/run_onepageos &" >> /etc/rc.local
 # this will start intel pipe manage
 sed -i -e '$i \/bin/bash /opt/intel/start.sh &\n' /etc/rc.local
+sed -i -e 's/#type=xlocal/xserver-command=X -nocursor/g' /etc/lightdm/lightdm.conf
 #echo "(sleep 15 ; sudo -u pi /home/pi/scripts/fullscreen) &" >> /etc/rc.local
 
 #####################################################################
