@@ -1,2 +1,3 @@
 #!/bin/bash
+(python3 /opt/intel/app.py)
 chromium-browser --kiosk --touch-events=enabled --disable-pinch --noerrdialogs --disable-session-crashed-bubble --app=$(head -n 1 /boot/fullpageos.txt)
