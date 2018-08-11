@@ -1,8 +1,0 @@
-[Unit]
-Description=Start intel Pipe manage app on startup
-[Service]
-ExecStart=/bin/bash /opt/intel/start.sh
-ExecReload=/bin/bash /opt/intel/start.sh
-ExecStop=
-[Install]
-WantedBy=multi-user.target

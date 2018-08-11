@@ -85,6 +85,8 @@ if [ ! -f /home/pi/.vnc/passwd ]; then
 fi
 
 #echo "sudo -u pi startx /home/pi/scripts/run_onepageos &" >> /etc/rc.local
+# this will start intel pipe manage 
+echo "sudo /bin/bash /opt/intel/start.sh &" >> /etc/rc.local
 #echo "(sleep 15 ; sudo -u pi /home/pi/scripts/fullscreen) &" >> /etc/rc.local
 
 #####################################################################
