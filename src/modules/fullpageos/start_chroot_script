@@ -43,11 +43,9 @@ then
         chown -R www-data:www-data intel
         chmod 775 intel
         pushd intel
-            # sed -i "s@'INIT_URL_PATH', __DIR__ . '/init.txt'@'INIT_URL_PATH', '/boot/fullpagedashboard.txt'@g" config.php
             python3 -m venv venv
             . venv/bin/activate
             python3 -m pip install -r requirements.txt
-            # (python3 app.py)
         popd
     popd
 fi
