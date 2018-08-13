@@ -1,2 +1,2 @@
 #!/bin/bash
-chromium-browser --touch-events=enabled --disable-pinch --noerrdialogs --disable-session-crashed-bubble --app=$(head -n 1 /boot/fullpageos.txt)
+chromium-browser --noerrdialogs --kiosk $(head -n 1 /boot/fullpageos.txt) --incognito --disable-translate
