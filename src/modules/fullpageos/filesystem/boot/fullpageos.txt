@@ -1,1 +1,1 @@
-http://localhost:5000
+http://app-i-publi-1diwzqd05vza1-1697187865.us-west-2.elb.amazonaws.com
