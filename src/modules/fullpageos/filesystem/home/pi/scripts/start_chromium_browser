@@ -2,5 +2,5 @@
 if [ ! -f /opt/intel/certs/thingName.txt ]; then
     chromium-browser --noerrdialogs --kiosk $(head -n 1 /boot/fullpageos.txt) --incognito --disable-translate
 else
-  chromium-browser --noerrdialogs --kiosk $(head -n 1 /boot/fullpageos.txt)/thing/$(head -n 1 /opt/intel/certs/thingName.txt) --incognito --disable-translate
+    chromium-browser --noerrdialogs --kiosk $(head -n 1 /boot/fullpageos.txt)/thing/$(head -n 1 /opt/intel/certs/thingName.txt) --incognito --disable-translate
 fi
